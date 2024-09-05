@@ -27,5 +27,18 @@ class ServicioEstudianteTest {
 		int edad = estudiante.getEdad();
 		assertEquals(20, edad);
 	}
+	
+	@Test
+	void testMatricula() {
+		String matricula = estudiante.getMatricula();
+		assertEquals("asd123", matricula);
+	}
+	
+	@Test
+    void testConstructor() {
+        assertEquals("Juan", estudiante.getNombre());
+        assertEquals(20, estudiante.getEdad());
+        assertEquals("asd123", estudiante.getMatricula());
+    }
 
 }
