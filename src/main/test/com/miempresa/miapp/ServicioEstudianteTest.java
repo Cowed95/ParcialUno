@@ -1,6 +1,8 @@
 package main.test.com.miempresa.miapp;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,13 +16,32 @@ class ServicioEstudianteTest {
 
 	Estudiante estudiante;
 	ServicioEstudiante servicioEstudiante;
-	EstudiantesRegistrados estudianteRegistrado;
+	EstudiantesRegistrados estudiantesRegistrado;
 	
 	@BeforeEach
 	void antes() {
 		estudiante = new Estudiante("Juan", 20, "asd123");
-		servicioEstudiante = new ServicioEstudiante(estudianteRegistrado);
-		estudianteRegistrado = Mockito.mock(estudianteRegistrado.getClass());
+		estudiantesRegistrado = Mockito.mock(EstudiantesRegistrados.class);
+        servicioEstudiante = new ServicioEstudiante(estudiantesRegistrado);
+	}
+	
+	@Test
+	void testEstudianteRegistrado() {
+		when(estudiantesRegistrado.buscarPorMatricula("asd123")).thenReturn(estudiante);
+		
+		boolean resultado = servicioEstudiante.esEstudianteRegistrado("asd123");
+        assertTrue(resultado);
+
+        verify(estudiantesRegistrado).buscarPorMatricula("asd123");
+		
+
+	}
+	
+	@Test
+	void testActualizarEstudiante() {
+		Estudiante estudianteActualizar = new Estudiante("Carlos", 21, "qwe123");
+		
+		when(estudiantesRegistrado.actualizarEstudiante(null, estudiante));
 	}
 	
 	@Test
@@ -47,10 +68,5 @@ class ServicioEstudianteTest {
         assertEquals(20, estudiante.getEdad());
         assertEquals("asd123", estudiante.getMatricula());
     }
-	
-	@Test
-	void testEsEstudianteRegistrado() {
-		boolean estudianteRegistrado = Ser
-	}
 
 }
