@@ -68,7 +68,7 @@ class ServicioEstudianteTest {
 
 		assertThrows(IllegalArgumentException.class, () -> {
 			servicioEstudiante.esEstudianteRegistrado("");
-		});
+		}, "No se admiten matrículas nulas o vacías");
 	}
 	
 	@Test
