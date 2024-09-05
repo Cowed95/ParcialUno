@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import main.java.com.eam.app.Calculadora;
 import main.java.com.miempresa.miapp.Estudiante;
 import main.java.com.miempresa.miapp.EstudiantesRegistrados;
 import main.java.com.miempresa.miapp.ServicioEstudiante;
@@ -23,6 +24,7 @@ class ServicioEstudianteTest {
 		estudiante = new Estudiante("Juan", 20, "asd123");
 		estudiantesRegistrado = Mockito.mock(EstudiantesRegistrados.class);
         servicioEstudiante = new ServicioEstudiante(estudiantesRegistrado);
+        
 	}
 	
 	@Test
@@ -34,7 +36,6 @@ class ServicioEstudianteTest {
 
         verify(estudiantesRegistrado).buscarPorMatricula("asd123");
 		
-
 	}
 	
 	@Test
@@ -42,6 +43,23 @@ class ServicioEstudianteTest {
 		Estudiante estudianteActualizar = new Estudiante("Carlos", 21, "qwe123");
 		
 		when(estudiantesRegistrado.actualizarEstudiante(null, estudiante));
+	}
+	
+	@Test
+	void testPromedioEstudiante() {
+		when(estudiantesRegistrado.calcularPromedioEdad()).thenReturn(40.0);
+		
+		double resultado = servicioEstudiante.obtenerPromedioEdadEstudiantes();
+		
+		assertEquals(40.0, resultado);
+		verify(estudiantesRegistrado).calcularPromedioEdad();
+	}
+	
+	
+	@Test
+	void testEstudianteMaximo() {
+		int resultado = servicioEstudiante.obtenerMaximoNumeroEstudiantes();
+		assertEquals(2000, resultado);
 	}
 	
 	@Test
