@@ -55,6 +55,17 @@ class ServicioEstudianteTest {
 		verify(estudiantesRegistrado).calcularPromedioEdad();
 	}
 	
+	@Test
+	void testExeptionEstudiante() {
+
+		assertThrows(IllegalArgumentException.class, () -> {
+			servicioEstudiante.esEstudianteRegistrado(null);
+		});
+
+		assertThrows(IllegalArgumentException.class, () -> {
+			servicioEstudiante.esEstudianteRegistrado("No hay matriculas registradas.");
+		});
+	}
 	
 	@Test
 	void testEstudianteMaximo() {
