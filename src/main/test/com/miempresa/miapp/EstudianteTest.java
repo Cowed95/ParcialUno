@@ -2,13 +2,18 @@ package main.test.com.miempresa.miapp;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import main.java.com.miempresa.miapp.Estudiante;
 
 class EstudianteTest {
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
+	Estudiante estudiante;
+	
+	@BeforeEach
+	void antes() {
+		estudiante = new Estudiante("Juan", 10, "asd123");
 	}
 
 }
