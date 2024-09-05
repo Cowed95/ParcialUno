@@ -15,5 +15,12 @@ class EstudianteTest {
 	void antes() {
 		estudiante = new Estudiante("Juan", 10, "asd123");
 	}
-
+	
+	@Test
+	void testNombre() {
+	String nombre = estudiante.getNombre();
+	assertEquals("Juan", nombre);
+	}
+	
+	
 }
