@@ -42,7 +42,11 @@ class ServicioEstudianteTest {
 	void testActualizarEstudiante() {
 		Estudiante estudianteActualizar = new Estudiante("Carlos", 21, "qwe123");
 		
-		when(estudiantesRegistrado.actualizarEstudiante(null, estudiante));
+		when(estudiantesRegistrado.actualizarEstudiante("qwe123", estudianteActualizar));
+		
+		
+		
+		
 	}
 	
 	@Test
@@ -63,7 +67,7 @@ class ServicioEstudianteTest {
 		});
 
 		assertThrows(IllegalArgumentException.class, () -> {
-			servicioEstudiante.esEstudianteRegistrado("No hay matriculas registradas.");
+			servicioEstudiante.esEstudianteRegistrado("");
 		});
 	}
 	
