@@ -4,16 +4,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import main.java.com.miempresa.miapp.Estudiante;
+import main.java.com.miempresa.miapp.EstudiantesRegistrados;
+import main.java.com.miempresa.miapp.ServicioEstudiante;
 
 class ServicioEstudianteTest {
 
 	Estudiante estudiante;
+	ServicioEstudiante servicioEstudiante;
+	EstudiantesRegistrados estudianteRegistrado;
 	
 	@BeforeEach
 	void antes() {
 		estudiante = new Estudiante("Juan", 20, "asd123");
+		servicioEstudiante = new ServicioEstudiante(estudianteRegistrado);
+		estudianteRegistrado = Mockito.mock(estudianteRegistrado.getClass());
 	}
 	
 	@Test
@@ -40,5 +47,10 @@ class ServicioEstudianteTest {
         assertEquals(20, estudiante.getEdad());
         assertEquals("asd123", estudiante.getMatricula());
     }
+	
+	@Test
+	void testEsEstudianteRegistrado() {
+		boolean estudianteRegistrado = Ser
+	}
 
 }
